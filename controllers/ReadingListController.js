@@ -15,8 +15,6 @@ const formatRow = (row = {}) =>
 
 const FILE_PATH = path.resolve("./db/database.json");
 
-console.log(FILE_PATH);
-
 class ReadingListController {
   async get(req, res) {
     // read file
