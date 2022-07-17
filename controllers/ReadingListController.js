@@ -97,14 +97,16 @@ class ReadingListController {
   }
 
   async delete(req, res) {
-    const { id = 0, title = "", author = "" } = req.body;
+    const { id = 0 } = req.params;
 
     try {
       // read file
       const fileContent = fs.readFileSync(FILE_PATH);
       const formatted = jsonParse(fileContent, true);
 
-      const matchIndex = formatted.findIndex((item) => item?.id === id);
+      const matchIndex = formatted.findIndex(
+        (item) => String(item?.id) === String(id)
+      );
 
       const newData = [
         ...formatted.slice(0, matchIndex),
