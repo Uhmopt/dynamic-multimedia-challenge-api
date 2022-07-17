@@ -1,6 +1,7 @@
 const { MSG_TRY_AGAIN } = require("../constants/messages");
 const fs = require("fs");
 const { jsonParse } = require("../lib/jsonHelper");
+const path = require("path");
 
 const formatRow = (row = {}) =>
   row
@@ -12,7 +13,7 @@ const formatRow = (row = {}) =>
       }
     : row;
 
-const FILE_PATH = "/db/database.json";
+const FILE_PATH = path.resolve(__dirname, "/db/database.json");
 
 class ReadingListController {
   async get(req, res) {
