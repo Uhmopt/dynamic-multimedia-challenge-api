@@ -2,6 +2,7 @@ const express = require("express");
 const routes = require("./routes");
 const cors = require("cors");
 const path = require("path");
+const { IS_DEVELOPMENT } = require("./config");
 
 const app = express();
 app.use(express.json());
@@ -17,8 +18,10 @@ app
     res.sendFile(path.resolve(__dirname, "build", "index.html"));
   });
 
-app.listen({ port: PORT }, () => {
-  console.log(`🚀  Server is ready port: ${PORT}`);
-});
+if (IS_DEVELOPMENT) {
+  app.listen({ port: PORT }, () => {
+    console.log(`🚀  Server is ready port: ${PORT}`);
+  });
+}
 
 module.exports = app;

@@ -1,4 +1,4 @@
-const IS_DEVELOPMENT = true;
+const IS_DEVELOPMENT = false;
 
 module.exports = {
   secret: "dynamic-multi-media-challenge",
