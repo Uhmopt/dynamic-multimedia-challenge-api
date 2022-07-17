@@ -12,13 +12,13 @@ const PORT = process.env.PORT || 5000;
 
 app.use("/api", routes);
 
-app
-  .use(express.static(path.resolve(__dirname, "build")))
-  .get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "build", "index.html"));
-  });
-
 if (IS_DEVELOPMENT) {
+  app
+    .use(express.static(path.resolve(__dirname, "public")))
+    .get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "public", "index.html"));
+    });
+
   app.listen({ port: PORT }, () => {
     console.log(`🚀  Server is ready port: ${PORT}`);
   });
