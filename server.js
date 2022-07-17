@@ -17,10 +17,8 @@ app
     res.sendFile(path.resolve(__dirname, "build", "index.html"));
   });
 
-const start = () => {
-  app.listen({ port: PORT }, () => {
-    console.log(`🚀  Server is ready port: ${PORT}`);
-  });
-};
+app.listen({ port: PORT }, () => {
+  console.log(`🚀  Server is ready port: ${PORT}`);
+});
 
-start();
+module.exports = app;
